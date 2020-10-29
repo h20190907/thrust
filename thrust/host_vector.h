@@ -16,7 +16,8 @@
 
 
 /*! \file host_vector.h
- *  \brief A dynamically-sizable array of elements which reside in the "host" memory space
+ *  \brief A dynamically-sizable array of elements which resides in memory
+ *         accessible to hosts.
  */
 
 #pragma once
@@ -43,11 +44,12 @@ template<typename T, typename Alloc> class device_vector;
  *  constant time removal of elements at the end, and linear time insertion
  *  and removal of elements at the beginning or in the middle. The number of
  *  elements in a \p host_vector may vary dynamically; memory management is
- *  automatic. The memory associated with a \p host_vector resides in the memory
- *  space of the host associated with a parallel device.
+ *  automatic. The memory associated with a \p host_vector resides in memory
+ *  accessible to hosts.
  *
- *  \see http://www.sgi.com/tech/stl/Vector.html
+ *  \see https://en.cppreference.com/w/cpp/container/vector
  *  \see device_vector
+ *  \see universal_vector
  */
 template<typename T, typename Alloc = std::allocator<T> >
   class host_vector
@@ -450,7 +452,7 @@ template<typename T, typename Alloc = std::allocator<T> >
      *  \param x The exemplar element to copy & insert.
      *  \return An iterator pointing to the newly inserted element.
      */
-    iterator insert(iterator position, const T &x); 
+    iterator insert(iterator position, const T &x);
 
     /*! This method inserts a copy of an exemplar value to a range at the
      *  specified position in this vector.

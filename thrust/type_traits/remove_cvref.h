@@ -17,7 +17,7 @@
 #pragma once
 
 #include <thrust/detail/config.h>
-#include <thrust/detail/type_traits.h>
+#include <type_traits>
 
 namespace thrust
 {
@@ -32,9 +32,9 @@ using std::remove_cvref_t;
 template <typename T>
 struct remove_cvref
 {
-  typedef typename detail::remove_cv<
-    typename detail::remove_reference<T>::type
-  >::type type;
+  using type = typename std::remove_cv<
+    typename std::remove_reference<T>::type
+  >::type;
 };
 
 #if THRUST_CPP_DIALECT >= 2011

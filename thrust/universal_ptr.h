@@ -14,16 +14,13 @@
  *  limitations under the License.
  */
 
+
+/*! \file universal_ptr.h
+ *  \brief A pointer to a variable which resides memory accessible to both
+ *         hosts and devices.
+ */
+
 #pragma once
 
-#include <thrust/detail/config.h>
-#include <thrust/detail/use_default.h>
-
-namespace thrust
-{
-
-template <typename Element, typename Pointer, typename Derived = use_default>
-class reference;
-
-} // namespace thrust
+#include <thrust/universal_allocator.h>
 

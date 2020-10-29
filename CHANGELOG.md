@@ -1,8 +1,33 @@
-# Thrust 1.10.0 (NVIDIA HPC SDK 20.9)
+# Thrust 1.11.0 (NVIDIA HPC SDK 20.11)
+
+Thrust 1.11.0 is the major release accompanying the NVIDIA HPC SDK 20.11 release.
+It exposes common Thrust abstractions for dealing with memory that can be
+  accessed by both hosts and devices: `thrust::universal_vector`,
+  `thrust::universal_ptr`, and `thrust::universal_allocator`.
+It also adds `thrust::async::inclusive_scan` and
+  `thrust::async::exclusive_scan`.
+Finally, it brings substantial improvements to the performance of the sort
+  backend for CUDA.
+
+## New Features
+
+- `thrust::universal_allocator<T>`: An allocator which allocates memory that is
+    accessible to both hosts and devices.
+- `thrust::universal_ptr<T>`: A tagged pointer to memory that is accessible to
+    both hosts and devices.
+- `thrust::universal_vector<T>`: A dynamically-allocated array of objects
+    accessible to both hosts and devices.
+
+## Other Enhancements
+
+- All backend `vector`, `pointer`, and `reference` types are now type aliases.
+
+# Thrust 1.10.0 (NVIDIA HPC SDK 20.9, CUDA Toolkit 11.2)
 
 ## Summary
 
-Thrust 1.10.0 is the major release accompanying the NVIDIA HPC SDK 20.9 release.
+Thrust 1.10.0 is the major release accompanying the NVIDIA HPC SDK 20.9 release
+  and the CUDA Toolkit 11.2 release.
 It drops support for C++03, GCC < 5, Clang < 6, and MSVC < 2017.
 It also overhauls CMake support.
 Finally, we now have a Code of Conduct for contributors:

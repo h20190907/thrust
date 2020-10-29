@@ -1,5 +1,5 @@
 /*
- *  Copyright 2020 NVIDIA Corporation
+ *  Copyright 2018-2020 NVIDIA Corporation
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,30 +16,7 @@
 
 #pragma once
 
-#include <thrust/mr/allocator.h>
-#include <thrust/mr/disjoint_tls_pool.h>
-#include <thrust/mr/new.h>
+#include <thrust/detail/config.h>
+
 #include <thrust/mr/device_memory_resource.h>
 
-namespace thrust
-{
-namespace detail
-{
-inline
-thrust::mr::allocator<
-    char,
-    thrust::mr::disjoint_unsynchronized_pool_resource<
-        thrust::device_memory_resource,
-        thrust::mr::new_delete_resource
-    >
-> single_device_tls_caching_allocator()
-{
-    return {
-        &thrust::mr::tls_disjoint_pool(
-            thrust::mr::get_global_resource<thrust::device_memory_resource>(),
-            thrust::mr::get_global_resource<thrust::mr::new_delete_resource>()
-        )
-    };
-}
-}
-}
